@@ -1,0 +1,7 @@
+.bg {
+    background-image: url("./header-footer-bg.jpg");
+    height: 10%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
