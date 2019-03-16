@@ -7,15 +7,18 @@ import { FreeTrialComponent } from './pages/free-trial/free-trial.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { LoginLayoutComponent } from './Login/login-layout/login-layout.component';
+import { AuthGuard } from './guard-auth/auth.guard';
+import { SignUpComponent } from './Login/sign-up/sign-up.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'about', component: AboutUsComponent},
-  {path: 'news', component: NewsComponent},
-  {path: 'blog', component: BlogComponent},
-  {path: 'free-trial', component: FreeTrialComponent},
-  {path: 'contact', component: ContactComponent},
+  {path: 'about', canActivate: [AuthGuard], component: AboutUsComponent},
+  {path: 'news', canActivate: [AuthGuard], component: NewsComponent},
+  {path: 'blog', canActivate: [AuthGuard], component: BlogComponent},
+  {path: 'free-trial', canActivate: [AuthGuard], component: FreeTrialComponent},
+  {path: 'contact', canActivate: [AuthGuard], component: ContactComponent},
   {path: 'login', component: LoginLayoutComponent},
+  {path: 'signUp', component: SignUpComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   /* {path: '*', component: ErrorComponent} */
 ];

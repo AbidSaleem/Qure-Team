@@ -1,19 +1,24 @@
-<nav class="navbar bg bg-dark text-light">
-  <a class="navbar-brand"> 
-    Qure Team
-  </a>
- 
-  <div>
-    <form class="form-inline " action="#">
-        <input class="form-control-s mt-3 mr-2 mb-2" type="email" name="email" placeholder=" Email address ">
-        <input class="form-control-s mt-3 mr-2 mb-2" type="password" name="password" placeholder=" password ">
-        <button class="btn btn-sm bg-secondary text-light mt-3 mb-2"  type="submit">Sign In</button>
+<div style="margin-top: 85px" class ="component text-expand-sm text-center " >
+
+    <h1 class="display-4 mb-5"> Sign In</h1>
+
+    <form class="form-group" role="form" action="#">
+        <div class="row">
+            <span class="col-sm-4"> </span>
+            <label for="email" class="col-sm-1 mb-4"> Email: </label>
+            <input type="text" #u1 name="email" id="email" class="form-control col-sm-3"> 
+        </div>
+       
+        <div class="row">
+            <span class="col-sm-4"> </span>
+            <label for="pwd" class="col-sm-1 mb-5"> Password: </label>
+            <input type="password" #p2 name="password" id="pwd" class="form-control col-sm-3">
+        </div>
+
+        <button class="btn btn-dark text-light"  type="submit"
+               (click)="check(u1.value, p2.value)">Sign In
+        </button>
+
     </form>
 
-    <div class="form-check-inline">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input"> Remember me
-        </label>
-    </div>
-  </div>
-</nav>
+</div>

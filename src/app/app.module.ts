@@ -17,8 +17,10 @@ import {FreeTrialComponent} from './pages/free-trial/free-trial.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { SignInComponent } from './Login/sign-in/sign-in.component';
-import { SignUpComponent } from './Login/sign-up/sign-up.component';
+import { SignUpComponent } from "./Login/sign-up/sign-up.component";
 import { LoginLayoutComponent } from './Login/login-layout/login-layout.component'
+import { AuthGuard } from './guard-auth/auth.guard';
+import { LogInService } from './logIn-service/log-in.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,10 @@ import { LoginLayoutComponent } from './Login/login-layout/login-layout.componen
     AppRoutingModule,
     AngularFontAwesomeModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    LogInService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
