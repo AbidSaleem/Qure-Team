@@ -19,6 +19,8 @@ import {LoginComponent} from './common/security/login/login.component';
 import {AuthGuard} from './common/security/services/auth.guard';
 import {LogInService} from './common/security/services/log-in.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { SignUpComponent } from './common/security/sign-up/sign-up.component';
+import { EntryComponent } from './entry/entry.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     FreeTrialComponent,
     LayoutComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent,
+    EntryComponent
   ],
   imports: [
     BrowserModule,

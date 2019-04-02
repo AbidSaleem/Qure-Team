@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LogInService} from 'src/app/common/security/services/log-in.service';
-import {Router} from '@angular/router';
+import { User } from '../user';
 
 @Component({
   selector: 'app-login',
@@ -9,19 +9,17 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private logInSrv: LogInService, private route: Router) {
+  constructor(private logInSrv: LogInService) {
 
   }
 
   ngOnInit() {
   }
 
-  check(user: string, pwd: string): boolean {
-    if (this.logInSrv.check(user, pwd)) {
-      this.route.navigate(['/home']);
-    } else {
-      return false;
-    }
-
+  logIn(email: string, pwd: string){
+    var user:User;
+    user = this.logInSrv.getUsers().filter(user => user.email == email)[0];
+    this.logInSrv.check(user.password, pwd);
+    
   }
 }

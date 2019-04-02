@@ -2,25 +2,31 @@
 
     <div class= "container text-expand-sm"> 
 
-        <h1 class="display-4 mb-5 text-center"> QURE Team</h1>
+        <h1 class="display-4 mb-5 text-center"> Sign Up</h1>
 
         <form class="form-group" role="form" action="#">
             <div class="row">
                 <span class="col-sm-4"> </span>
+                <label for="name" class="col-sm-1 mb-4"> Name: </label>
+                <input type="text" #nm name="name" id="name" class="form-control col-sm-3"> 
+            </div>
+
+            <div class="row">
+                <span class="col-sm-4"> </span>
                 <label for="email" class="col-sm-1 mb-4"> Email: </label>
-                <input type="text" #u1 name="email" id="email" class="form-control col-sm-3"> 
+                <input type="text" #em name="email" id="email" class="form-control col-sm-3"> 
             </div>
             
             <div class="row">
                 <span class="col-sm-4"> </span>
                 <label for="pwd" class="col-sm-1 mb-5"> Password: </label>
-                <input type="password" #p2 name="password" id="pwd" class="form-control col-sm-3">
+                <input type="password" #pwd name="password" id="pwd" class="form-control col-sm-3">
             </div>
-
+    
             <button class="btn btn-dark text-light "  type="submit"
-                    (click)="logIn(u1.value, p2.value)">Sign In
+                    (click) = "createUser(nm.value, em.value, pwd.value)">Sign Up  
             </button>
-
+    
         </form>
     </div>
 

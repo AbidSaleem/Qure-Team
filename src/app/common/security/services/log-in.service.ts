@@ -1,31 +1,49 @@
 import {Injectable} from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LogInService {
 
-  loggedIn = false;
+  private static loggedIn = false;
+  private static users : User[] = [];
 
-  constructor() {
+  constructor(private route: Router) {
   }
 
   getLoggedIn(): boolean {
-    return this.loggedIn;
+    return LogInService.loggedIn;
+  }
+
+  getUsers(): User[] {
+    return LogInService.users;
   }
 
   doLogout(): void {
-    this.loggedIn = false;
+    LogInService.loggedIn = false;
+    this.route.navigate(['/entry']);
   }
 
-  check(name: string, pwd: string) {
-    if (name === 'admin' && pwd === 'admin') {
-      this.loggedIn = true;
-    } else {
-      this.loggedIn = false;
-    }
+  check(pwd1: string, pwd2: string) {
+    
 
-    return this.loggedIn;
+    if (pwd1 == pwd2) {
+      LogInService.loggedIn = true;
+      this.route.navigate(['/home']);
+    } 
 
+    else {
+     LogInService.loggedIn = false;
+     this.route.navigate(['/login']);
+    } 
+  }
+
+  addUser(newUser: User) {
+    LogInService.users.push(newUser);
+    console.log(LogInService.users[0].name);
+    LogInService.loggedIn = true;
+    this.route.navigate(['/home']);
   }
 }

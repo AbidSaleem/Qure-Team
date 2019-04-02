@@ -18,8 +18,6 @@ export class HeaderComponent implements OnInit {
 
   doLogout(): void {
     this.loginService.doLogout();
-
-    this.route.navigate(['/home']);
   }
 
 }

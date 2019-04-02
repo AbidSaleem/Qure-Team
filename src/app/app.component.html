@@ -1,9 +1,11 @@
-<div class="vertical-center" *ngIf="!isLoggedIn()">
-  <div class="container">
-    <app-login>
-    </app-login>
-  </div>
-</div>
-<app-layout *ngIf="isLoggedIn()">
+<div *ngIf="!isLoggedIn()">
 
-</app-layout>
+    <router-outlet>
+    </router-outlet>
+
+</div>
+
+<div *ngIf="isLoggedIn()">
+    <app-layout >
+    </app-layout>
+</div>
