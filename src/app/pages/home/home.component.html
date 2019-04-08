@@ -1,38 +1,41 @@
-<div > <!--[@slideAnimation]-->
+<div>
 
   <div class="row">
     <div class="col-md-12">
+      <form role="form" (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" id="firstName" [(ngModel)]="currentUser.name"
+                   #firstName="ngModel" placeholder="enter first name">
+          </div>
+          <div class="col-md-6 form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="currentUser.lastName"
+                   placeholder="enter last name">
+          </div>
+        </div>
 
-      <form>
         <div class="form-group">
-          <label for="exampleFormControlInput1">Email address</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Example select</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+          <label for="exampleFormControlSelect1">Telefon nr sec</label>
+          <select class="form-control" id="exampleFormControlSelect1" name="exampleFormControlSelect1"
+                  [(ngModel)]="currentUser.phoneNumber">
+            <option>010 345 65 77</option>
+            <option>020 345 65 77</option>
+            <option>030 345 65 77</option>
+            <option>070 345 65 77</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="exampleFormControlSelect2">Example multiple select</label>
-          <select multiple class="form-control" id="exampleFormControlSelect2">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
+          <label for="website">Web sitesi gir</label>
+          <input type="text" class="form-control" id="website" name="website" [(ngModel)]="currentUser.website"
+                 placeholder="enter web site">
         </div>
         <div class="form-group">
-          <label for="exampleFormControlTextarea1">Example textarea</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <button class="btn btn-primary">Save</button>
         </div>
       </form>
+      <div class="col-md-12">{{currentUser | json}}</div>
     </div>
   </div>
 </div>

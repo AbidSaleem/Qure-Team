@@ -19,8 +19,9 @@ import {LoginComponent} from './common/security/login/login.component';
 import {AuthGuard} from './common/security/services/auth.guard';
 import {LogInService} from './common/security/services/log-in.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { SignUpComponent } from './common/security/sign-up/sign-up.component';
-import { EntryComponent } from './entry/entry.component';
+import {SignUpComponent} from './common/security/sign-up/sign-up.component';
+import {EntryComponent} from './entry/entry.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,8 +43,9 @@ import { EntryComponent } from './entry/entry.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     AngularFontAwesomeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     AuthGuard,

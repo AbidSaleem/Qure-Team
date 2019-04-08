@@ -8,13 +8,14 @@ import {LogInService} from './common/security/services/log-in.service';
 })
 
 export class AppComponent implements OnInit {
-  
-  constructor(private loginService: LogInService) { }
+
+  constructor(private loginService: LogInService) {
+  }
 
   ngOnInit(): void {
   }
 
   isLoggedIn(): boolean {
-    return this.loginService.getLoggedIn();
+    return true; // this.loginService.getLoggedIn();
   }
 }

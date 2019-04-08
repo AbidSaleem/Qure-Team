@@ -13,12 +13,12 @@ import { AppComponent } from './app.component';
 import { EntryComponent } from './entry/entry.component';
 
 const routes: Routes = [
-  {path: 'home', canActivate: [AuthGuard], component: HomeComponent},
-  {path: 'about', canActivate: [AuthGuard], component: AboutUsComponent},
-  {path: 'news', canActivate: [AuthGuard], component: NewsComponent},
-  {path: 'blog', canActivate: [AuthGuard], component: BlogComponent},
-  {path: 'free-trial', canActivate: [AuthGuard], component: FreeTrialComponent},
-  {path: 'contact', canActivate: [AuthGuard], component: ContactComponent},
+  {path: 'home',  component: HomeComponent},
+  {path: 'about',  component: AboutUsComponent},
+  {path: 'news',  component: NewsComponent},
+  {path: 'blog',  component: BlogComponent},
+  {path: 'free-trial',  component: FreeTrialComponent},
+  {path: 'contact',  component: ContactComponent},
   {path: 'entry', component: EntryComponent, 
     children: [
       {path: 'login', component: LoginComponent},

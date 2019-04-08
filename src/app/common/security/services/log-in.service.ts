@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import { Router } from '@angular/router';
-import { User } from '../user';
+import {Router} from '@angular/router';
+import {User} from '../user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import { User } from '../user';
 export class LogInService {
 
   private static loggedIn = false;
-  private static users : User[] = [];
+  private static users: User[] = [];
 
   constructor(private route: Router) {
   }
@@ -27,17 +27,13 @@ export class LogInService {
   }
 
   check(pwd1: string, pwd2: string) {
-    
-
-    if (pwd1 == pwd2) {
+    if (pwd1 === pwd2) {
       LogInService.loggedIn = true;
       this.route.navigate(['/home']);
-    } 
-
-    else {
-     LogInService.loggedIn = false;
-     this.route.navigate(['/login']);
-    } 
+    } else {
+      LogInService.loggedIn = false;
+      this.route.navigate(['/login']);
+    }
   }
 
   addUser(newUser: User) {
