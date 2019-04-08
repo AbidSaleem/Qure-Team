@@ -7,11 +7,10 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './common/layout/header/header.component';
 
 import {FooterComponent} from './common/layout/footer/footer.component';
-import {HomeComponent} from './pages/home/home.component';
 import {AboutUsComponent} from './pages/about-us/about-us.component';
 import {NewsComponent} from './pages/news/news.component';
-import {HomeBodyComponent} from './pages/home/home-body/home-body.component';
-import {BlogComponent} from './pages/blog/blog.component'
+import {HomeComponent} from './pages/home/home.component';
+import {BlogComponent} from './pages/blog/blog.component';
 import {FreeTrialComponent} from './pages/free-trial/free-trial.component';
 import {LayoutComponent} from './common/layout/layout.component';
 import {ContactComponent} from './pages/contact/contact.component';
@@ -20,8 +19,11 @@ import {AuthGuard} from './common/security/services/auth.guard';
 import {LogInService} from './common/security/services/log-in.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SignUpComponent} from './common/security/sign-up/sign-up.component';
-import {EntryComponent} from './entry/entry.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AlertComponent} from './common/alert/alert.component';
+import {ErrorInterceptor, fakeBackendProvider, JwtInterceptor} from './common/interceptors';
+
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,25 +33,32 @@ import {FormsModule} from '@angular/forms';
     HomeComponent,
     AboutUsComponent,
     NewsComponent,
-    HomeBodyComponent,
     BlogComponent,
     FreeTrialComponent,
     LayoutComponent,
     ContactComponent,
-    LoginComponent,
     SignUpComponent,
-    EntryComponent
+    AlertComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     AngularFontAwesomeModule,
     BrowserAnimationsModule,
   ],
   providers: [
     AuthGuard,
-    LogInService
+    LogInService,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+
+    // provider used to create fake backend
+    fakeBackendProvider
+
   ],
   bootstrap: [AppComponent]
 })

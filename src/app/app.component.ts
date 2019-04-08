@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {LogInService} from './common/security/services/log-in.service';
+import {AuthenticationService} from "./common/services";
+import {Router} from "@angular/router";
+import {User} from "./common/models";
 
 @Component({
   selector: 'app-root',
@@ -7,15 +10,18 @@ import {LogInService} from './common/security/services/log-in.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
+  currentUser: User;
 
-  constructor(private loginService: LogInService) {
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  ngOnInit(): void {
-  }
-
-  isLoggedIn(): boolean {
-    return true; // this.loginService.getLoggedIn();
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
 }

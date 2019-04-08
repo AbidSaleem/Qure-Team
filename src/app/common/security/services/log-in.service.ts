@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import {User} from '../user';
+import {User} from '../../models';
+
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,7 @@ export class LogInService {
 
   addUser(newUser: User) {
     LogInService.users.push(newUser);
-    console.log(LogInService.users[0].name);
+    console.log(LogInService.users[0].firstName);
     LogInService.loggedIn = true;
     this.route.navigate(['/home']);
   }

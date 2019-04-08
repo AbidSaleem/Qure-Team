@@ -7,27 +7,21 @@ import {FreeTrialComponent} from './pages/free-trial/free-trial.component';
 import {BlogComponent} from './pages/blog/blog.component';
 import {ContactComponent} from './pages/contact/contact.component';
 import {AuthGuard} from './common/security/services/auth.guard';
-import { LoginComponent } from './common/security/login/login.component';
-import { SignUpComponent } from './common/security/sign-up/sign-up.component';
-import { AppComponent } from './app.component';
-import { EntryComponent } from './entry/entry.component';
+import {LoginComponent} from './common/security/login/login.component';
+import {SignUpComponent} from './common/security/sign-up/sign-up.component';
 
 const routes: Routes = [
-  {path: 'home',  component: HomeComponent},
-  {path: 'about',  component: AboutUsComponent},
-  {path: 'news',  component: NewsComponent},
-  {path: 'blog',  component: BlogComponent},
-  {path: 'free-trial',  component: FreeTrialComponent},
-  {path: 'contact',  component: ContactComponent},
-  {path: 'entry', component: EntryComponent, 
-    children: [
-      {path: 'login', component: LoginComponent},
-      {path: 'signUp', component: SignUpComponent},
-      {path: '', redirectTo: 'login', pathMatch: 'full'}
-    ]
-  },
-  {path: '', redirectTo: 'entry', pathMatch: 'full'},
-  /* {path: '*', component: ErrorComponent} */
+
+  {path: '', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'about', component: AboutUsComponent, canActivate: [AuthGuard]},
+  {path: 'news', component: NewsComponent, canActivate: [AuthGuard]},
+  {path: 'blog', component: BlogComponent, canActivate: [AuthGuard]},
+  {path: 'free-trial', component: FreeTrialComponent, canActivate: [AuthGuard]},
+  {path: 'contact', component: ContactComponent, canActivate: [AuthGuard]},
+  {path: 'login', component: LoginComponent},
+  {path: 'signUp', component: SignUpComponent},
+  {path: '**', redirectTo: ''}
+
 ];
 
 @NgModule({
