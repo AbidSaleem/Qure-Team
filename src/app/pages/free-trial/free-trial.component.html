@@ -1,3 +1,30 @@
-<p>
-  free-trial works!
-</p>
+<div class="container mt-5 ml-4">
+  <h1 class="display-4">
+    Profile
+  </h1>
+
+  <form class="form-group mt-5" role="form" action="#">
+    <div class="row align-items-center">
+        <label for="name" class="mr-2 col-sm-2">Edit Name:   </label> 
+        <input type="text" class="form-control col-sm-3" name="name" [(ngModel)]="name"> 
+
+    </div>
+    <div class="row mt-2">
+        <label for="phone" class="mr-2 col-sm-2">Edit Phone Number:   </label> 
+        <input type="text" class="form-control col-sm-3" name="phone"  [(ngModel)]="phone" >
+    </div>
+    <div class="row mt-2">
+        <label for="email" class="mr-2 col-sm-2">Edit Email:   </label> 
+        <input type="text" class="form-control col-sm-3" name="email"  [(ngModel)]="email">
+    </div>
+    <div class="row mt-2">
+      <label for="website" class="mr-2 col-sm-2">Website</label>
+      <input type="text" class="form-control col-sm-3" name="website"  [(ngModel)]="website">
+    </div>
+
+    <div class="mt-5">
+      <button class="btn btn-sm btn-dark offset-sm-4" type="submit" value="Submit" (click)="submit()" >Save Changes</button>
+    </div>
+    
+  </form>
+</div>

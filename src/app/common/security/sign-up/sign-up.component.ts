@@ -18,8 +18,9 @@ export class SignUpComponent implements OnInit {
     var newUser = new User();
     newUser.name = name;
     newUser.email = email;
+    
     newUser.password = password;
-
+    console.log(newUser.name);
     this.logInSrv.addUser(newUser);
   }
 }

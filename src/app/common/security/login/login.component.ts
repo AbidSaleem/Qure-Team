@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   logIn(email: string, pwd: string){
     var user:User;
     user = this.logInSrv.getUsers().filter(user => user.email == email)[0];
-    this.logInSrv.check(user.password, pwd);
+    this.logInSrv.check(user, pwd);
     
   }
 }

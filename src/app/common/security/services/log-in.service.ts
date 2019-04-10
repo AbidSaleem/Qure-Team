@@ -9,8 +9,17 @@ export class LogInService {
 
   private static loggedIn = false;
   private static users : User[] = [];
+  private static loggedInUser: User;
 
-  constructor(private route: Router) {
+  constructor(private route?: Router) {
+  }
+
+  setLoggedInUser(loggedInUser: User): void {
+    LogInService.loggedInUser = loggedInUser;
+  }
+
+  getLoggedInUser(): User {
+    return LogInService.loggedInUser;
   }
 
   getLoggedIn(): boolean {
@@ -26,11 +35,12 @@ export class LogInService {
     this.route.navigate(['/entry']);
   }
 
-  check(pwd1: string, pwd2: string) {
+  check(user: User, pwd: string) {
     
 
-    if (pwd1 == pwd2) {
+    if (user.password == pwd) {
       LogInService.loggedIn = true;
+      this.setLoggedInUser(user);
       this.route.navigate(['/home']);
     } 
 
@@ -42,8 +52,9 @@ export class LogInService {
 
   addUser(newUser: User) {
     LogInService.users.push(newUser);
-    console.log(LogInService.users[0].name);
     LogInService.loggedIn = true;
+    this.setLoggedInUser(newUser);
     this.route.navigate(['/home']);
   }
+
 }
